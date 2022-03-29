@@ -1,4 +1,6 @@
 
+## Live
+    cyber-duck.great-site.net
 ## Installation
 - config .env file 
 - php artisan serve
@@ -6,5 +8,5 @@
 - php artisan db:seed
 
 
-## ADMIN CREDENTIALS
+## Admin Credentials
 -  admin@admin.com : password
