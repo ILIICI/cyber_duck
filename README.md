@@ -1,5 +1,5 @@
 
-## Live Demo
+## Live Demo : Will be ready 29/03/2022 after 5pm (UTC+01:00).
     cyber-duck.great-site.net
 ## Installation
 - config .env file 
