@@ -1,5 +1,5 @@
 
-## Live
+## Live Demo
     cyber-duck.great-site.net
 ## Installation
 - config .env file 
