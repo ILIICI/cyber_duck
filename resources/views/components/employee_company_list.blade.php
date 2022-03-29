@@ -1,7 +1,7 @@
 @if (session('message'))
-<div class=" m-2 text-center alert alert-info">
-    <h3> {{ session('message') }}</h3>
-</div>
+    <div class=" m-2 text-center alert alert-info">
+        <h3> {{ session('message') }}</h3>
+    </div>
 @endif
 <table class="table">
     <thead>
@@ -20,15 +20,24 @@
                 <th scope="row">{{ ++$key }}</th>
                 <td>{{ $item->first_name }}</td>
                 <td>{{ $item->last_name }}</td>
-                <td>{{ $item->company->name }}</td>
+                <td>
+                    @isset($item->company->name)
+                        {{ $item->company->name }}
+                    @endisset
+                </td>
                 <td>
                     <button class="btn btn-info" data-toggle="modal"
                         data-target="#edit{{ $item->id }}">EDIT</button>
                 </td>
             </tr>
             <!-- Modal Edit-->
-            <x-employee_companyModalWindow :id="$item->id" :firstname="$item->first_name" :lastname="$item->last_name"
-                :currentCompany="$item->company->name" :companies="$companies"/>
+            @if (empty($item->company->name))
+                <x-employee_companyModalWindow :id="$item->id" :firstname="$item->first_name"
+                    :lastname="$item->last_name" :companies="$companies" currentCompany='NOTPROVIDED' />
+            @else
+                <x-employee_companyModalWindow :id="$item->id" :firstname="$item->first_name"
+                    :lastname="$item->last_name" :companies="$companies" :currentCompany="$item->company->name" />
+            @endif
         @endforeach
 
     </tbody>

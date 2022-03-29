@@ -25,9 +25,9 @@ class CompanyValidation extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:companies,name|max:120',
+            'name' => 'required|max:120',
             'email' => 'nullable|email',
-            'website' => 'nullable|url|max:100',
+            'website' => 'nullable|max:100',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
         ];
     }

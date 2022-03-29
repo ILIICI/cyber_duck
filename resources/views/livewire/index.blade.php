@@ -27,17 +27,31 @@
                             <td>{{ $row->last_name }}</td>
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->phone }}</td>
-                            <td>{{ $row->company->name }}</td>
-                            <td>{{ $row->company->email }}</td>
-                            <td><a target="_blank"
-                                    href='{{ $row->company->website }}'>{{ $row->company->website }}</a></td>
                             <td>
-                                @if ($row->company->logo == null)
-                                    <img class="rounded" src="https://via.placeholder.com/50x50.png?text=N/A" />
-                                @else
-                                    <img width="30px" height="auto" class="rounded"
-                                        src="{{ asset('/storage/companies/logo/' . $row->company->logo) }}" />
-                                @endif
+                                @isset($row->company->name)
+                                    {{ $row->company->name }}
+                                @endisset
+                            </td>
+                            <td> @isset($row->company->email)
+                                    {{ $row->company->email }}
+                                @endisset
+                            </td>
+                            <td>
+                                @isset($row->company->website)
+                                    <a target="_blank"
+                                        href='{{ $row->company->website }}'>{{ $row->company->website }}</a>
+                                @endisset
+
+                            </td>
+                            <td>
+                                @isset($row->company->logo)
+                                    @if ($row->company->logo == null)
+                                        <img class="rounded" src="https://via.placeholder.com/50x50.png?text=N/A" />
+                                    @else
+                                        <img width="30px" height="auto" class="rounded"
+                                            src="{{ asset('/storage/companies/logo/' . $row->company->logo) }}" />
+                                    @endif
+                                @endisset
                             </td>
                         </tr>
                     @endforeach
